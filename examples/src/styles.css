@@ -1,0 +1,173 @@
+html {
+  box-sizing: border-box;
+  touch-action: manipulation;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  touch-action: inherit;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset,
+img {
+  border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+  font-weight: normal;
+  font-style: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+button:focus,
+textarea:focus,
+input:focus,
+select:focus,
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+textarea,
+button {
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+input::-webkit-input-placeholder {
+  color: #d2d2d2;
+}
+textarea::-webkit-input-placeholder {
+  color: #d2d2d2;
+}
+
+button {
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul.list-unstyled {
+  list-style: none;
+}
+.svg-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  color: inherit;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+}
+
+.svg-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+.svg-up {
+  /*default*/
+  transform: rotate(0deg);
+}
+
+.svg-right {
+  transform: rotate(90deg);
+}
+
+.svg-down {
+  transform: rotate(180deg);
+}
+
+.svg-left {
+  transform: rotate(-90deg);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', Arial, sans-serif, PingFangSC;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgba(47, 47, 47, 1);
+  font-size: 14px;
+  line-height: 1.4;
+  background-color: #fff;
+}
+
+.article-wrapper {
+  width: 640px;
+  margin: 100px auto;
+}
+.article-wrapper h1 {
+  font-size: 30px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.article-wrapper p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4a4a4a;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}

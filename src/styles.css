@@ -1,0 +1,13 @@
+.nc-lazy-image {
+  display: block;
+  margin-bottom: 10px;
+}
+.nc-lazy-image > img {
+  max-width: 100%;
+  display: block;
+}
+
+.nc-lazy-image.default > img,
+.nc-lazy-image.loading > img {
+  width: 100%;
+}
