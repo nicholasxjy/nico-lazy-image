@@ -1,6 +1,7 @@
 import 'intersection-observer'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { isInViewport } from './utils'
 import Placeholder from './placeholder.png'
 import './styles.css'
 
@@ -14,37 +15,41 @@ export default class LazyImage extends React.Component {
     }
   }
   componentDidMount() {
-    const { loaded } = this.state
-    const { src, threshold } = this.props
-    const vm = this
-    const io = new IntersectionObserver(entries => {
-      const entry = entries[0]
-      const ratio = parseFloat(threshold / 100)
-      if (entry.intersectionRatio > ratio) {
-        if (!loaded) {
-          vm.setState({ status: 'loading' })
-          const image = new Image()
-          image.onload = () => {
-            vm.setState({ source: src, loaded: true, status: 'loaded' })
-            io.unobserve(vm.el)
-          }
-          image.onerror = () => {
-            vm.setState({ status: 'error' })
-          }
-          image.src = src
-        }
-      }
-    })
-    io.observe(this.el)
+    if (isInViewport(this.el)) {
+      this.loadImage()
+    } else {
+      window.addEventListener('scroll', this.handleScroll, false)
+    }
   }
-  getRef(ref) {
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll, false)
+  }
+  loadImage = () => {
+    const { loaded } = this.state
+    const { src } = this.props
+    if (!loaded) {
+      this.setState({ status: 'loading' })
+      const img = new Image()
+      img.onload = () => {
+        this.setState({ loaded: true, source: src, status: 'loaded' })
+        window.removeEventListener('scroll', this.handleScroll, false)
+      }
+      img.src = src
+    }
+  }
+  handleScroll = () => {
+    if (isInViewport(this.el)) {
+      this.loadImage()
+    }
+  }
+  getRef = ref => {
     this.el = ref
   }
   render() {
     const { source, status } = this.state
     const { alt } = this.props
     return (
-      <div className={`nc-lazy-image ${status}`} ref={this.getRef.bind(this)}>
+      <div className={`nc-lazy-image ${status}`} ref={this.getRef}>
         <img src={source} alt={alt} />
       </div>
     )
