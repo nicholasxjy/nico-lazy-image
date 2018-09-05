@@ -1,6 +1,6 @@
 {
   "name": "nico-lazy-image",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A image lazy load component",
   "main": "dist/index.js",
   "scripts": {
@@ -21,6 +21,10 @@
     "image"
   ],
   "author": "nicholasxjy",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicholasxjy/nico-lazy-image.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.0.0",

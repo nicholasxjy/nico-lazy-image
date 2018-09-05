@@ -18,6 +18,9 @@
   opacity: 1;
   transition: all 0.1s ease 0.4s;
 }
+.nc-lazy-canvas.is-transend {
+  display: none;
+}
 .nc-lazy-image.is-loaded .nc-lazy-canvas {
   visibility: hidden;
   opacity: 0;

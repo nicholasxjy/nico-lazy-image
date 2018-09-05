@@ -29,6 +29,8 @@ class App extends React.Component {
           <LazyImage
             source="https://cdn-images-1.medium.com/max/2000/1*UFahCPAZ88YUl03IcrZjyg.jpeg"
             placeholder="https://cdn-images-1.medium.com/fit/c/200/200/1*UFahCPAZ88YUl03IcrZjyg.jpeg"
+            width={640}
+            height={320}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
@@ -49,6 +51,8 @@ class App extends React.Component {
           <LazyImage
             source="https://cdn-images-1.medium.com/max/2000/1*zMgU-Pjz9CEsfiZVqJlfIg.jpeg"
             placeholder="https://cdn-images-1.medium.com/focal/200/200/84/54/1*zMgU-Pjz9CEsfiZVqJlfIg.jpeg"
+            width={640}
+            height={426}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
@@ -69,12 +73,16 @@ class App extends React.Component {
           <LazyImage
             source="https://cdn-images-1.medium.com/max/2000/1*aYSu-nYbqA4pSvoNr9Y2bA.jpeg"
             placeholder="https://cdn-images-1.medium.com/focal/200/200/49/52/1*aYSu-nYbqA4pSvoNr9Y2bA.jpeg"
+            width={640}
+            height={295}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
           <LazyImage
             source="https://cdn-images-1.medium.com/max/2000/0*FPOrNnlLf9EpyBy7"
             placeholder="https://cdn-images-1.medium.com/fit/c/304/312/0*FPOrNnlLf9EpyBy7"
+            width={640}
+            height={426}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
@@ -98,6 +106,8 @@ class App extends React.Component {
           <LazyImage
             source="https://cdn-images-1.medium.com/max/1600/0*l5QWmuESlnu9q_3B"
             placeholder="https://cdn-images-1.medium.com/focal/304/312/50/50/0*l5QWmuESlnu9q_3B"
+            width={640}
+            height={426}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
@@ -114,6 +124,14 @@ class App extends React.Component {
             “This isn’t type or an exercise in layout, these are luscious
             illustrations,” I was assigned my mentor.
           </p>
+          <LazyImage
+            source="https://wpimg.wallstcn.com/09b75d36-bc7d-443e-aa59-7c92d9c124b2.jpg"
+            placeholder="https://wpimg.wallstcn.com/09b75d36-bc7d-443e-aa59-7c92d9c124b2.jpg?imageView2/1/w/51/h/29"
+            width={640}
+            height={416}
+          >
+            {({ source, alt }) => <img src={source} alt={alt} />}
+          </LazyImage>
           <p>
             For the next three months Raymond and I would share an office and
             illustrated an array of faces, places, flags, animals, food,
