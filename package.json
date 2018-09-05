@@ -51,7 +51,8 @@
     "webpack-dev-server": "^3.1.7"
   },
   "dependencies": {
-    "intersection-observer": "^0.5.0",
-    "prop-types": "^15.6.2"
+    "classnames": "^2.2.6",
+    "prop-types": "^15.6.2",
+    "react-visibility-sensor": "^3.14.0"
   }
 }

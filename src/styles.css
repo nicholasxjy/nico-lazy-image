@@ -1,13 +1,28 @@
 .nc-lazy-image {
   display: block;
-  margin-bottom: 10px;
+  position: relative;
 }
-.nc-lazy-image > img {
+.nc-lazy-image img {
   max-width: 100%;
   display: block;
 }
-
-.nc-lazy-image.default > img,
-.nc-lazy-image.loading > img {
+.nc-lazy-image img {
   width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s ease 0s;
+}
+.nc-lazy-canvas {
+  width: 100%;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.1s ease 0.4s;
+}
+.nc-lazy-image.is-loaded .nc-lazy-canvas {
+  visibility: hidden;
+  opacity: 0;
+}
+.nc-lazy-image.is-loaded img {
+  visibility: visible;
+  opacity: 1;
 }

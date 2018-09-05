@@ -26,7 +26,12 @@ class App extends React.Component {
             got to create a few more.
           </p>
 
-          <LazyImage src="https://cdn-images-1.medium.com/max/2000/1*meOx3S6iwY6y_4DacFjeWQ.jpeg" />
+          <LazyImage
+            source="https://cdn-images-1.medium.com/max/2000/1*UFahCPAZ88YUl03IcrZjyg.jpeg"
+            placeholder="https://cdn-images-1.medium.com/fit/c/200/200/1*UFahCPAZ88YUl03IcrZjyg.jpeg"
+          >
+            {({ source, alt }) => <img src={source} alt={alt} />}
+          </LazyImage>
 
           <p>
             It was the summer of 2008, and I was one year away from receiving my
@@ -41,7 +46,12 @@ class App extends React.Component {
             bike to work (I’m terrible on bikes).
           </p>
 
-          <LazyImage src="https://cdn-images-1.medium.com/max/2000/1*urzYlEW07UbpmVU74_VYkg.jpeg" />
+          <LazyImage
+            source="https://cdn-images-1.medium.com/max/2000/1*zMgU-Pjz9CEsfiZVqJlfIg.jpeg"
+            placeholder="https://cdn-images-1.medium.com/focal/200/200/84/54/1*zMgU-Pjz9CEsfiZVqJlfIg.jpeg"
+          >
+            {({ source, alt }) => <img src={source} alt={alt} />}
+          </LazyImage>
 
           <p>
             Soon after my arrival and meeting the team (oh and biking to work!)
@@ -57,38 +67,17 @@ class App extends React.Component {
             illustrations,” I was assigned my mentor.
           </p>
           <LazyImage
-            src="https://cdn-images-1.medium.com/max/2000/1*toy1X9D1T95u17IDXf-ZFA.jpeg"
-            threshold={10}
-          />
+            source="https://cdn-images-1.medium.com/max/2000/1*aYSu-nYbqA4pSvoNr9Y2bA.jpeg"
+            placeholder="https://cdn-images-1.medium.com/focal/200/200/49/52/1*aYSu-nYbqA4pSvoNr9Y2bA.jpeg"
+          >
+            {({ source, alt }) => <img src={source} alt={alt} />}
+          </LazyImage>
           <LazyImage
-            src="https://cdn-images-1.medium.com/max/2000/1*fs2lxJEkeutqG_Gbtn_xUA.jpeg"
-            threshold={10}
-          />
-          <p>
-            For the next three months Raymond and I would share an office and
-            illustrated an array of faces, places, flags, animals, food,
-            clothing, symbols, holidays, sports, and well, you probably know the
-            rest. But long before any of this was complete, I had to learn how
-            to design Apple-styled icons. We split the batch and the lesson in
-            humility and craftsmanship began.
-          </p>
-          <LazyImage src="https://cdn-images-1.medium.com/max/2000/1*EvGrp7ffNK-iZkMjxFg1AQ.jpeg" />
-
-          <p>
-            Soon after my arrival and meeting the team (oh and biking to work!)
-            I was handed my project. I was still trying to make sense of the
-            assignment I’d just received when someone asked if I knew what an
-            emoji was. And well, I didn’t, and at the time, neither did the
-            majority of the English speaking world. I answered ‘no’. This would
-            all change, of course, as the iPhone would soon popularize them
-            globally by offering an emoji keyboard. Moments later I learned what
-            this Japanese word meant and that I was to draw hundreds of them.
-            Just as I was looking down the hallway and internally processing,
-            “This isn’t type or an exercise in layout, these are luscious
-            illustrations,” I was assigned my mentor.
-          </p>
-          <LazyImage src="https://cdn-images-1.medium.com/max/2000/1*LSXrUglc1poBynF8TO1BHg.jpeg" />
-          <LazyImage src="https://cdn-images-1.medium.com/max/2000/0*4vgBth9NKPqHBJZU" />
+            source="https://cdn-images-1.medium.com/max/2000/0*FPOrNnlLf9EpyBy7"
+            placeholder="https://cdn-images-1.medium.com/fit/c/304/312/0*FPOrNnlLf9EpyBy7"
+          >
+            {({ source, alt }) => <img src={source} alt={alt} />}
+          </LazyImage>
           <p>
             For the next three months Raymond and I would share an office and
             illustrated an array of faces, places, flags, animals, food,
@@ -99,6 +88,20 @@ class App extends React.Component {
           </p>
 
           <p>
+            For the next three months Raymond and I would share an office and
+            illustrated an array of faces, places, flags, animals, food,
+            clothing, symbols, holidays, sports, and well, you probably know the
+            rest. But long before any of this was complete, I had to learn how
+            to design Apple-styled icons. We split the batch and the lesson in
+            humility and craftsmanship began.
+          </p>
+          <LazyImage
+            source="https://cdn-images-1.medium.com/max/1600/0*l5QWmuESlnu9q_3B"
+            placeholder="https://cdn-images-1.medium.com/focal/304/312/50/50/0*l5QWmuESlnu9q_3B"
+          >
+            {({ source, alt }) => <img src={source} alt={alt} />}
+          </LazyImage>
+          <p>
             Soon after my arrival and meeting the team (oh and biking to work!)
             I was handed my project. I was still trying to make sense of the
             assignment I’d just received when someone asked if I knew what an
@@ -111,14 +114,6 @@ class App extends React.Component {
             “This isn’t type or an exercise in layout, these are luscious
             illustrations,” I was assigned my mentor.
           </p>
-          <LazyImage
-            src="https://cdn-images-1.medium.com/max/2000/1*cBOt-EeB6Qv8_aXHO_Ba7g.jpeg"
-            threshold={10}
-          />
-          <LazyImage
-            src="https://cdn-images-1.medium.com/max/1600/1*1QLyoQuirofEmDT1nE7LeA.jpeg"
-            threshold={10}
-          />
           <p>
             For the next three months Raymond and I would share an office and
             illustrated an array of faces, places, flags, animals, food,

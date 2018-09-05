@@ -1,70 +1,79 @@
-import 'intersection-observer'
 import React from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { isInViewport } from './utils'
-import Placeholder from './placeholder.png'
+import classNames from 'classnames'
+import VisibilitySensor from 'react-visibility-sensor'
+import blurImage from './StackBlur'
 import './styles.css'
 
-export default class LazyImage extends React.Component {
+class LazyImage extends React.Component {
   constructor(props) {
     super(props)
+    // fix ssr
+    if (typeof window === 'undefined' || typeof window.document === 'undefined')
+      return
     this.state = {
-      source: props.placeholder,
-      loaded: false,
-      status: 'default'
+      status: '',
+      isLoaded: false
     }
   }
   componentDidMount() {
-    if (isInViewport(this.el)) {
-      this.loadImage()
-    } else {
-      window.addEventListener('scroll', this.handleScroll, false)
+    const { placeholder } = this.props
+    const canvas = ReactDOM.findDOMNode(this.canvasEl)
+    const img = new Image()
+    img.crossOrigin = 'Anonymous'
+    img.onload = () => {
+      blurImage(img, canvas, 20)
     }
+    img.src = placeholder
   }
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll, false)
-  }
-  loadImage = () => {
-    const { loaded } = this.state
-    const { src } = this.props
-    if (!loaded) {
-      this.setState({ status: 'loading' })
-      const img = new Image()
-      img.onload = () => {
-        this.setState({ loaded: true, source: src, status: 'loaded' })
-        window.removeEventListener('scroll', this.handleScroll, false)
+  handleVisibleChange = isVisible => {
+    const { isLoaded } = this.state
+    if (isVisible) {
+      if (!isLoaded) {
+        this.loadOriginImage()
       }
-      img.src = src
     }
   }
-  handleScroll = () => {
-    if (isInViewport(this.el)) {
-      this.loadImage()
+  loadOriginImage = () => {
+    this.setState({ status: 'is-loading' })
+    const { source } = this.props
+    const img = new Image()
+    img.onload = () => {
+      this.setState({ status: 'is-loaded', isLoaded: true })
     }
+    img.src = source
   }
-  getRef = ref => {
-    this.el = ref
+  getCanvas = ref => {
+    this.canvasEl = ref
   }
   render() {
-    const { source, status } = this.state
-    const { alt } = this.props
+    const { source, alt, children, ...rest } = this.props
+    const { isLoaded } = this.state
+    const cls = classNames('nc-lazy-image', {
+      'is-loaded': isLoaded
+    })
     return (
-      <div className={`nc-lazy-image ${status}`} ref={this.getRef}>
-        <img src={source} alt={alt} />
-      </div>
+      <VisibilitySensor onChange={this.handleVisibleChange}>
+        <div className={cls}>
+          {isLoaded ? children({ source, alt, ...rest }) : null}
+          <canvas className="nc-lazy-canvas" ref={this.getCanvas} />
+        </div>
+      </VisibilitySensor>
     )
   }
 }
 
 LazyImage.propTypes = {
-  placeholder: PropTypes.string,
-  src: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
   alt: PropTypes.string,
-  threshold: PropTypes.number
+  children: PropTypes.func,
+  height: PropTypes.number
 }
 
 LazyImage.defaultProps = {
-  placeholder: Placeholder,
-  alt: 'img alt',
-  threshold: 0
+  alt: 'image alt'
 }
+
+export default LazyImage
