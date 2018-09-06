@@ -21,10 +21,9 @@ class LazyImage extends React.Component {
       width: props.width || '100%',
       height: props.height || 0
     }
-    // fix ssr
-    if (!isInDom) return
   }
   componentDidMount() {
+    if (!isInDom) return
     const { placeholder } = this.props
     const canvas = ReactDOM.findDOMNode(this.canvasEl)
     const img = new Image()
@@ -48,10 +47,10 @@ class LazyImage extends React.Component {
     const rect = el.getBoundingClientRect()
     const width = rect.width
     const height = parseInt((width / imgNaturalWidth) * imgNaturalHeight, 10)
-    console.log(rect) //eslint-disable-line
     return { width, height }
   }
   handleVisibleChange = isVisible => {
+    if (!isInDom) return
     const { isLoaded } = this.state
     if (isVisible) {
       if (!isLoaded) {
@@ -84,11 +83,14 @@ class LazyImage extends React.Component {
     const { width, height } = this.state
     return { width: width + 'px', height: height + 'px' }
   }
+  renderOriginal = () => {
+    const { source, alt, children } = this.props
+    const { isLoaded } = this.state
+    return isLoaded ? children({ source, alt }) : null
+  }
   render() {
     // fix ssr
-    if (!isInDom) return null
-
-    const { source, alt, children, classPrefix } = this.props
+    const { classPrefix } = this.props
     const { isLoaded, width, height } = this.state
     const cls = classNames('nc-lazy-image', {
       'is-loaded': isLoaded,
@@ -103,7 +105,7 @@ class LazyImage extends React.Component {
             style={{ width, height }}
           />
           <div className="nc-lazy-item">
-            {isLoaded ? children({ source, alt }) : null}
+            {isInDom ? this.renderOriginal() : null}
           </div>
         </div>
       </VisibilitySensor>
