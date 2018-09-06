@@ -129,7 +129,10 @@ LazyImage.defaultProps = {
   height: 'auto',
   placeholderWidth: 20,
   placeholderHeight: 20,
-  sensorProps: {}
+  sensorProps: {
+    partialVisibility: true,
+    offset: { top: 0 }
+  }
 }
 
 export default LazyImage
