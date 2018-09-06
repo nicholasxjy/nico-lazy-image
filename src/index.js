@@ -17,36 +17,28 @@ class LazyImage extends React.Component {
     this.state = {
       status: '',
       isLoaded: false,
-      isTransitionEnd: false,
-      width: props.width || '100%',
-      height: props.height || 0
+      width: props.width,
+      height: props.height
     }
   }
   componentDidMount() {
-    if (!isInDom) return
-    const { placeholder } = this.props
+    const { height } = this.props
     const canvas = ReactDOM.findDOMNode(this.canvasEl)
-    const img = new Image()
-    img.crossOrigin = 'Anonymous'
-    img.onload = () => {
-      if (this.props.width && this.props.height) {
-        this.setState({ width: this.props.width, height: this.props.height })
-      } else {
-        const dimension = this.calculateDimension({
-          imgNaturalWidth: img.naturalWidth,
-          imgNaturalHeight: img.naturalHeight
-        })
-        this.setState(dimension)
-      }
-      blurImage(img, canvas, this.props.radius)
+    if (height === 'auto') {
+      const { width, height } = this.placeholderEl
+      const dimension = this.calculateDimension({
+        imgWidth: width,
+        imgHeight: height
+      })
+      this.setState(dimension)
     }
-    img.src = placeholder
+    blurImage(this.placeholderEl, canvas, this.props.radius)
   }
-  calculateDimension = ({ imgNaturalWidth, imgNaturalHeight }) => {
+  calculateDimension = ({ imgWidth, imgHeight }) => {
     const el = ReactDOM.findDOMNode(this)
     const rect = el.getBoundingClientRect()
     const width = rect.width
-    const height = parseInt((width / imgNaturalWidth) * imgNaturalHeight, 10)
+    const height = parseInt((width / imgWidth) * imgHeight, 10)
     return { width, height }
   }
   handleVisibleChange = isVisible => {
@@ -63,12 +55,10 @@ class LazyImage extends React.Component {
     const { source } = this.props
     const img = new Image()
     img.onload = () => {
-      if (this.props.width && this.props.height) {
-        this.setState({ width: this.props.width, height: this.props.height })
-      } else {
+      if (this.props.height === 'auto') {
         const dimension = this.calculateDimension({
-          imgNaturalWidth: img.naturalWidth,
-          imgNaturalHeight: img.naturalHeight
+          imgWidth: img.width,
+          imgHeight: img.height
         })
         this.setState(dimension)
       }
@@ -78,6 +68,9 @@ class LazyImage extends React.Component {
   }
   getCanvas = ref => {
     this.canvasEl = ref
+  }
+  getPlaceholderRef = ref => {
+    this.placeholderEl = ref
   }
   getCanvasDimension = () => {
     const { width, height } = this.state
@@ -90,7 +83,7 @@ class LazyImage extends React.Component {
   }
   render() {
     // fix ssr
-    const { classPrefix } = this.props
+    const { classPrefix, placeholder, alt } = this.props
     const { isLoaded, width, height } = this.state
     const cls = classNames('nc-lazy-image', {
       'is-loaded': isLoaded,
@@ -99,12 +92,20 @@ class LazyImage extends React.Component {
     return (
       <VisibilitySensor onChange={this.handleVisibleChange}>
         <div className={cls} style={{ width, height }}>
+          <img
+            className="nc-lazy-placeholder"
+            ref={this.getPlaceholderRef}
+            crossOrigin="anonymous"
+            src={placeholder}
+            alt={alt}
+            style={{ width, height }}
+          />
           <canvas
             className="nc-lazy-canvas"
             ref={this.getCanvas}
             style={{ width, height }}
           />
-          <div className="nc-lazy-item">
+          <div className="nc-lazy-source">
             {isInDom ? this.renderOriginal() : null}
           </div>
         </div>
@@ -119,14 +120,16 @@ LazyImage.propTypes = {
   alt: PropTypes.string,
   children: PropTypes.func,
   classPrefix: PropTypes.string,
-  width: PropTypes.number,
-  height: PropTypes.number,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   radius: PropTypes.number
 }
 
 LazyImage.defaultProps = {
   alt: 'image alt',
-  radius: 20
+  radius: 20,
+  width: '100%',
+  height: 'auto'
 }
 
 export default LazyImage

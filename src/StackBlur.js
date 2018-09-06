@@ -560,22 +560,7 @@ export default function blurImage(img, canvas, radius, includeAlphaChannel) {
     var imageData
 
     try {
-      try {
-        imageData = context.getImageData(topX, topY, width, height)
-      } catch (e) {
-        // NOTE: this part is supposedly only needed if you want to work with local files
-        // so it might be okay to remove the whole try/catch block and just use
-        // imageData = context.getImageData( topX, topY, width, height );
-        try {
-          window.netscape.security.PrivilegeManager.enablePrivilege(
-            'UniversalBrowserRead'
-          )
-          imageData = context.getImageData(topX, topY, width, height)
-        } catch (e) {
-          alert('Cannot access local image')
-          throw new Error('unable to access local image data: ' + e)
-        }
-      }
+      imageData = context.getImageData(topX, topY, width, height)
     } catch (e) {
       alert('Cannot access image')
       throw new Error('unable to access image data: ' + e)
@@ -811,7 +796,6 @@ export default function blurImage(img, canvas, radius, includeAlphaChannel) {
             ((p = y + radiusPlus1) < heightMinus1 ? p : heightMinus1) *
               width) <<
           2
-
         rSum += rInSum += stackIn.r = pixels[p]
         gSum += gInSum += stackIn.g = pixels[p + 1]
         bSum += bInSum += stackIn.b = pixels[p + 2]

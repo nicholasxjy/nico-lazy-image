@@ -27,8 +27,8 @@ class App extends React.Component {
           </p>
 
           <LazyImage
-            source="https://cdn-images-1.medium.com/max/2000/1*UFahCPAZ88YUl03IcrZjyg.jpeg"
-            placeholder="https://cdn-images-1.medium.com/fit/c/200/200/1*UFahCPAZ88YUl03IcrZjyg.jpeg"
+            source="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
+            placeholder="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
             width={640}
             height={320}
           >
@@ -49,8 +49,8 @@ class App extends React.Component {
           </p>
 
           <LazyImage
-            source="https://cdn-images-1.medium.com/max/2000/1*zMgU-Pjz9CEsfiZVqJlfIg.jpeg"
-            placeholder="https://cdn-images-1.medium.com/focal/200/200/84/54/1*zMgU-Pjz9CEsfiZVqJlfIg.jpeg"
+            source="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
+            placeholder="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
             width={640}
             height={426}
           >
@@ -71,18 +71,16 @@ class App extends React.Component {
             illustrations,” I was assigned my mentor.
           </p>
           <LazyImage
-            source="https://cdn-images-1.medium.com/max/2000/1*aYSu-nYbqA4pSvoNr9Y2bA.jpeg"
-            placeholder="https://cdn-images-1.medium.com/focal/200/200/49/52/1*aYSu-nYbqA4pSvoNr9Y2bA.jpeg"
+            source="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
+            placeholder="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
             width={640}
-            height={295}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
           <LazyImage
-            source="https://cdn-images-1.medium.com/max/2000/0*FPOrNnlLf9EpyBy7"
-            placeholder="https://cdn-images-1.medium.com/fit/c/304/312/0*FPOrNnlLf9EpyBy7"
+            source="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
+            placeholder="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
             width={640}
-            height={426}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
@@ -104,10 +102,9 @@ class App extends React.Component {
             humility and craftsmanship began.
           </p>
           <LazyImage
-            source="https://cdn-images-1.medium.com/max/1600/0*l5QWmuESlnu9q_3B"
-            placeholder="https://cdn-images-1.medium.com/focal/304/312/50/50/0*l5QWmuESlnu9q_3B"
+            source="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
+            placeholder="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
             width={640}
-            height={426}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
@@ -125,7 +122,7 @@ class App extends React.Component {
             illustrations,” I was assigned my mentor.
           </p>
           <LazyImage
-            source="https://wpimg.wallstcn.com/09b75d36-bc7d-443e-aa59-7c92d9c124b2.jpg"
+            source="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
             placeholder="https://wpimg.wallstcn.com/09b75d36-bc7d-443e-aa59-7c92d9c124b2.jpg?imageView2/1/w/51/h/29"
             width={640}
             height={416}
