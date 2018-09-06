@@ -22,17 +22,15 @@ class LazyImage extends React.Component {
     }
   }
   componentDidMount() {
-    const { height } = this.props
+    const { placeholderWidth, placeholderHeight } = this.props
     const canvas = ReactDOM.findDOMNode(this.canvasEl)
-    if (height === 'auto') {
-      const { width, height } = this.placeholderEl
-      const dimension = this.calculateDimension({
-        imgWidth: width,
-        imgHeight: height
-      })
-      this.setState(dimension)
-    }
-    blurImage(this.placeholderEl, canvas, this.props.radius)
+    blurImage(
+      this.placeholderEl,
+      canvas,
+      placeholderWidth,
+      placeholderHeight,
+      this.props.radius
+    )
   }
   calculateDimension = ({ imgWidth, imgHeight }) => {
     const el = ReactDOM.findDOMNode(this)
@@ -83,14 +81,15 @@ class LazyImage extends React.Component {
   }
   render() {
     // fix ssr
-    const { classPrefix, placeholder, alt } = this.props
+    const { classPrefix, placeholder, alt, sensorProps } = this.props
     const { isLoaded, width, height } = this.state
     const cls = classNames('nc-lazy-image', {
       'is-loaded': isLoaded,
       [classPrefix]: !!classPrefix
     })
+    const { onChange, ...rest } = sensorProps //eslint-disable-line
     return (
-      <VisibilitySensor onChange={this.handleVisibleChange}>
+      <VisibilitySensor onChange={this.handleVisibleChange} {...rest}>
         <div className={cls} style={{ width, height }}>
           <img
             className="nc-lazy-placeholder"
@@ -98,13 +97,8 @@ class LazyImage extends React.Component {
             crossOrigin="anonymous"
             src={placeholder}
             alt={alt}
-            style={{ width, height }}
           />
-          <canvas
-            className="nc-lazy-canvas"
-            ref={this.getCanvas}
-            style={{ width, height }}
-          />
+          <canvas className="nc-lazy-canvas" ref={this.getCanvas} />
           <div className="nc-lazy-source">
             {isInDom ? this.renderOriginal() : null}
           </div>
@@ -122,14 +116,20 @@ LazyImage.propTypes = {
   classPrefix: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  radius: PropTypes.number
+  radius: PropTypes.number,
+  placeholderWidth: PropTypes.number,
+  placeholderHeight: PropTypes.number,
+  sensorProps: PropTypes.object
 }
 
 LazyImage.defaultProps = {
   alt: 'image alt',
-  radius: 20,
+  radius: 10,
   width: '100%',
-  height: 'auto'
+  height: 'auto',
+  placeholderWidth: 20,
+  placeholderHeight: 20,
+  sensorProps: {}
 }
 
 export default LazyImage

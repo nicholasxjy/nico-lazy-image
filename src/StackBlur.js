@@ -1,4 +1,11 @@
-export default function blurImage(img, canvas, radius, includeAlphaChannel) {
+export default function blurImage(
+  img,
+  canvas,
+  w,
+  h,
+  radius,
+  includeAlphaChannel
+) {
   const mulTable = [
       512,
       512,
@@ -521,10 +528,7 @@ export default function blurImage(img, canvas, radius, includeAlphaChannel) {
     canvas = document.getElementById(canvas)
   }
 
-  let w = img.naturalWidth,
-    h = img.naturalHeight
-
-  radius = radius ? radius : (h / w) * 10
+  radius = radius ? radius : 10
 
   // canvas.style.width  = w + "px";
   // canvas.style.height = h + "px";
@@ -562,7 +566,6 @@ export default function blurImage(img, canvas, radius, includeAlphaChannel) {
     try {
       imageData = context.getImageData(topX, topY, width, height)
     } catch (e) {
-      alert('Cannot access image')
       throw new Error('unable to access image data: ' + e)
     }
 
