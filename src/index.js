@@ -21,7 +21,8 @@ class LazyImage extends React.Component {
       height: props.height
     }
   }
-  componentDidMount() {
+  componentDidMount() {}
+  handlePlaceholderLoaded = () => {
     const { placeholderWidth, placeholderHeight } = this.props
     const canvas = ReactDOM.findDOMNode(this.canvasEl)
     blurImage(
@@ -97,6 +98,7 @@ class LazyImage extends React.Component {
             crossOrigin="anonymous"
             src={placeholder}
             alt={alt}
+            onLoad={this.handlePlaceholderLoaded}
           />
           <canvas className="nc-lazy-canvas" ref={this.getCanvas} />
           <div className="nc-lazy-source">

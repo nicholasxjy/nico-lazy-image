@@ -25,12 +25,13 @@ class App extends React.Component {
             460 additional ones. Later, as a full time Apple employee, I even
             got to create a few more.
           </p>
-
           <LazyImage
-            source="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
-            placeholder="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
-            width={640}
-            height={320}
+            source="https://wpimg.wallstcn.com/7868b54f-1e16-479e-a817-0dc91ef5926f.png?imageView2/1/w/370/h/180"
+            placeholder="https://wpimg.wallstcn.com/7868b54f-1e16-479e-a817-0dc91ef5926f.png?imageView2/1/w/37/h/18"
+            width={370}
+            height={180}
+            placeholderWidth={37}
+            placeholderHeight={18}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
@@ -49,10 +50,12 @@ class App extends React.Component {
           </p>
 
           <LazyImage
-            source="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
-            placeholder="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
-            width={640}
-            height={426}
+            source="https://wpimg.wallstcn.com/56a9580b-1d17-41d8-ba73-cb052ba1b529.jpg?imageView2/1/w/250/h/160"
+            placeholder="https://wpimg.wallstcn.com/56a9580b-1d17-41d8-ba73-cb052ba1b529.jpg?imageView2/1/w/25/h/16"
+            width={250}
+            height={160}
+            placeholderWidth={25}
+            placeholderHeight={16}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
@@ -71,16 +74,22 @@ class App extends React.Component {
             illustrations,” I was assigned my mentor.
           </p>
           <LazyImage
-            source="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
-            placeholder="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
-            width={640}
+            source="https://wpimg.wallstcn.com/8266afb7-26bd-4554-9dba-9add2d995242.jpg?imageView2/1/w/370/h/180"
+            placeholder="https://wpimg.wallstcn.com/8266afb7-26bd-4554-9dba-9add2d995242.jpg?imageView2/1/w/37/h/18"
+            width={370}
+            height={180}
+            placeholderWidth={37}
+            placeholderHeight={18}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
           <LazyImage
-            source="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
-            placeholder="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
-            width={640}
+            source="https://wpimg.wallstcn.com/869efc6b-6046-485f-9cb6-2e0cf66cc5c1.jpg?imageView2/1/w/750/h/300"
+            placeholder="https://wpimg.wallstcn.com/869efc6b-6046-485f-9cb6-2e0cf66cc5c1.jpg?imageView2/1/w/75/h/30"
+            width={750}
+            height={300}
+            placeholderWidth={75}
+            placeholderHeight={30}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
@@ -102,9 +111,12 @@ class App extends React.Component {
             humility and craftsmanship began.
           </p>
           <LazyImage
-            source="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
-            placeholder="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
-            width={640}
+            source="https://wpimg.wallstcn.com/c4554286-551a-4d8b-89c4-fd0ce160efc3.jpg?imageView2/1/w/370/h/180"
+            placeholder="https://wpimg.wallstcn.com/c4554286-551a-4d8b-89c4-fd0ce160efc3.jpg?imageView2/1/w/37/h/18"
+            width={370}
+            height={180}
+            placeholderWidth={37}
+            placeholderHeight={18}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
@@ -122,10 +134,12 @@ class App extends React.Component {
             illustrations,” I was assigned my mentor.
           </p>
           <LazyImage
-            source="https://wpimg.wallstcn.com/6aefd3ee-c05c-4537-8f77-64712c7b9648.jpg"
-            placeholder="https://wpimg.wallstcn.com/09b75d36-bc7d-443e-aa59-7c92d9c124b2.jpg?imageView2/1/w/51/h/29"
-            width={640}
-            height={416}
+            source="https://wpimg.wallstcn.com/b467af46-3835-43f1-be3c-b25f10c9c31c.jpg?imageView2/1/w/370/h/180"
+            placeholder="https://wpimg.wallstcn.com/b467af46-3835-43f1-be3c-b25f10c9c31c.jpg?imageView2/1/w/37/h/18"
+            width={370}
+            height={180}
+            placeholderWidth={37}
+            placeholderHeight={18}
           >
             {({ source, alt }) => <img src={source} alt={alt} />}
           </LazyImage>
