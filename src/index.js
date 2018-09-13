@@ -18,7 +18,8 @@ class LazyImage extends React.Component {
       status: '',
       isLoaded: false,
       width: props.width,
-      height: props.height
+      height: props.height,
+      isCanvasLoaded: false
     }
   }
   componentDidMount() {}
@@ -32,6 +33,7 @@ class LazyImage extends React.Component {
       placeholderHeight,
       this.props.radius
     )
+    this.setState({ isCanvasLoaded: true })
   }
   calculateDimension = ({ imgWidth, imgHeight }) => {
     const el = ReactDOM.findDOMNode(this)
@@ -83,10 +85,11 @@ class LazyImage extends React.Component {
   render() {
     // fix ssr
     const { classPrefix, placeholder, alt, sensorProps } = this.props
-    const { isLoaded, width, height } = this.state
+    const { isLoaded, width, height, isCanvasLoaded } = this.state
     const cls = classNames('nc-lazy-image', {
       'is-loaded': isLoaded,
-      [classPrefix]: !!classPrefix
+      [classPrefix]: !!classPrefix,
+      'is-canvas-loaded': isCanvasLoaded
     })
     const { onChange, ...rest } = sensorProps //eslint-disable-line
     return (
