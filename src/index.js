@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import VisibilitySensor from 'react-visibility-sensor'
@@ -22,10 +21,9 @@ class LazyImage extends React.Component {
       isCanvasLoaded: false
     }
   }
-  componentDidMount() {}
   handlePlaceholderLoaded = () => {
     const { placeholderWidth, placeholderHeight } = this.props
-    const canvas = ReactDOM.findDOMNode(this.canvasEl)
+    const canvas = this.canvasEl
     blurImage(
       this.placeholderEl,
       canvas,
@@ -36,8 +34,7 @@ class LazyImage extends React.Component {
     this.setState({ isCanvasLoaded: true })
   }
   calculateDimension = ({ imgWidth, imgHeight }) => {
-    const el = ReactDOM.findDOMNode(this)
-    const rect = el.getBoundingClientRect()
+    const rect = this.wrap.getBoundingClientRect()
     const width = rect.width
     const height = parseInt((width / imgWidth) * imgHeight, 10)
     return { width, height }
@@ -67,6 +64,9 @@ class LazyImage extends React.Component {
     }
     img.src = source
   }
+  getWrapRef = ref => {
+    this.wrap = ref
+  }
   getCanvas = ref => {
     this.canvasEl = ref
   }
@@ -94,7 +94,7 @@ class LazyImage extends React.Component {
     const { onChange, ...rest } = sensorProps //eslint-disable-line
     return (
       <VisibilitySensor onChange={this.handleVisibleChange} {...rest}>
-        <div className={cls} style={{ width, height }}>
+        <div className={cls} style={{ width, height }} ref={this.getWrapRef}>
           <img
             className="nc-lazy-placeholder"
             ref={this.getPlaceholderRef}
